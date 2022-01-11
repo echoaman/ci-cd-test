@@ -1,8 +1,9 @@
 name: "Test workflow"
-on: push
+on: issue_comment
 jobs:
   test-job:
     name: "Test job"
+    if: ${{ github.event.issue.pull_request }}
     runs-on: ubuntu-latest
     steps:
-      - run: echo "test job ran"
+      - run: echo "Comment on PR ${{ github.event.issue.number }}"
